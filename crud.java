@@ -39,7 +39,60 @@ public class crud{
 
        private static void editar_usuario(){
 
-        
+            JOptionPane.showMessageDialog(null, "Você deve digitar o nome & o CPF do usuário que você deseja mudar;");
+
+            String nome_a_mudar = JOptionPane.showInputDialog("Digite o nome do usuário que você quer mudar");
+
+            String cpf_a_mudar = JOptionPane.showInputDialog("Digite o CPF do usuário que você quer mudar");
+
+            boolean nome_ou_cpf_nao_cadastrado = false;
+
+            for(int i = 0; i <= usuarios.size(); i++){
+
+                Usuario usuario = usuarios.get(i);
+                boolean cpf_ou_email_ja_cadastrado = false;
+
+                if(usuario.cpf.equals(cpf_a_mudar) && usuario.nome.equals(nome_a_mudar)){
+
+                    nome_ou_cpf_nao_cadastrado = true;
+
+                    String novo_nome = JOptionPane.showInputDialog("Digite o novo nome do usuário.");
+
+                    String novo_cpf = JOptionPane.showInputDialog("Digite o novo cpf do usuário.");
+
+                    String novo_email = JOptionPane.showInputDialog("Digite o novo email do usuário.");
+
+                    String nova_senha = JOptionPane.showInputDialog("Digite o nova senha do usuário.");
+
+                    for(int index = 0; i < usuarios.size(); i++){
+                        
+                        Usuario cpf_e_email_do_usuario = usuarios.get(index);
+
+                        if(cpf_e_email_do_usuario.cpf.equals(novo_cpf) || cpf_e_email_do_usuario.email.equals(novo_email)){
+
+                            cpf_ou_email_ja_cadastrado = true;
+                        };
+                    };
+
+                    if(cpf_ou_email_ja_cadastrado){
+
+                        JOptionPane.showMessageDialog(null, "CPF ou Email já cadastrados.");
+
+                    } else {
+
+                    usuario.nome = novo_nome;
+                    usuario.cpf = novo_cpf;
+                    usuario.email = novo_email;
+                    usuario.senha = nova_senha;
+
+                    };
+                };
+            };
+
+            if(!nome_ou_cpf_nao_cadastrado){
+
+                JOptionPane.showMessageDialog(null, "Nome ou CPF não cadastrado!");
+            };
        };
 
        private static void excluir_usuario(){
@@ -76,6 +129,8 @@ public class crud{
                 if(usuario.nome.equals(resposta)){
 
                     JOptionPane.showMessageDialog(null, "Nome cadastrado!");
+
+                    JOptionPane.showMessageDialog(null, "Nome: "+usuario.nome+"\nCPF: "+usuario.cpf+"\nEmail: "+usuario.email+"\nSenha: "+usuario.senha);
 
                 } else {
 
