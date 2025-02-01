@@ -33,6 +33,16 @@ public class crud{
 
             editar_usuario();
             break;
+
+        case "5":
+
+            fim_do_crud = true;
+            break;
+
+        default:
+
+            JOptionPane.showMessageDialog(null, "Favor inserir uma das 5 opções, 1, 2, 3, 4 ou 5 que sejam válidas!");
+            break;
        };
        };
     };
@@ -47,7 +57,7 @@ public class crud{
 
             boolean nome_ou_cpf_nao_cadastrado = false;
 
-            for(int i = 0; i <= usuarios.size(); i++){
+            for(int i = 0; i < usuarios.size(); i++){
 
                 Usuario usuario = usuarios.get(i);
                 boolean cpf_ou_email_ja_cadastrado = false;
@@ -103,7 +113,7 @@ public class crud{
 
             String cpf_a_excluir = JOptionPane.showInputDialog(null, "Digite o CPF do usuário que você digitou o nome: ");
 
-            for(int i = 0; i <= usuarios.size(); i++){
+            for(int i = 0; i < usuarios.size(); i++){
 
                 Usuario usuario = usuarios.get(i);
 
