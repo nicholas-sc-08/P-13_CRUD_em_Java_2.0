@@ -28,15 +28,43 @@ public class crud{
 
             excluir_usuario();
             break;
+
+        case "4":
+
+            editar_usuario();
+            break;
        };
        };
     };
 
+       private static void editar_usuario(){
+
+        
+       };
+
        private static void excluir_usuario(){
 
-            String resposta = JOptionPane.showInputDialog(null, "Digite o nome que deseja excluir:");
+            JOptionPane.showMessageDialog(null, "Você está para excluir um usuário, você deve digitar o nome & o CPF dele para que ele seja excluido;");
 
-            
+            String nome_a_excluir = JOptionPane.showInputDialog(null, "Digite o nome do usuário que deseja excluir:");
+
+            String cpf_a_excluir = JOptionPane.showInputDialog(null, "Digite o CPF do usuário que você digitou o nome: ");
+
+            for(int i = 0; i <= usuarios.size(); i++){
+
+                Usuario usuario = usuarios.get(i);
+
+                if(usuario.cpf.equals(cpf_a_excluir) && usuario.nome.equals(nome_a_excluir)){
+
+                    usuarios.remove(i);
+
+                    JOptionPane.showMessageDialog(null, "Usuário Excluido!");
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "CPF ou nome inválido!");
+                };
+            };
        };
 
        private static void pesquisar_usuario(){
